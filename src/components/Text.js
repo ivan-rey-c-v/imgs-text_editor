@@ -10,18 +10,20 @@ function Text(props) {
 		store.dispatch({ type: 'SET_TEXT', index: props.index, value })
 	}, [])
 
-	return <Input {...props} onChange={handleOnChange} size="auto" />
+	return <Input {...props} onChange={handleOnChange} draggable />
 }
 
 const Input = styled.input`
 	position: absolute;
+	border: none;
 	display: block;
 	font-size: 1rem;
+	font-weight: 600;
 	padding: 1rem;
 	top: 10rem;
 	left: 10rem;
 	min-width: auto;
-	background-color: lightgray;
+	background-color: white;
 `
 
 export default React.memo(Text)

@@ -1,38 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
+import useDrag from '../hooks/useDrag'
+
 function Image(props) {
-	const [pos, setPos] = useState(null)
-	const [startMousePos, setStartMousePos] = useState(null)
-
-	// useCallback memoizes the function
-	// this makes the function not re-renders as with the Image-component
-	const handleDragOver = useCallback(
-		function(event) {
-			const { parentTop, parentLeft } = props.parentPos
-			const { clientX, clientY } = event
-
-			if (!startMousePos) {
-				return setStartMousePos({
-					top: clientY,
-					left: clientX
-				})
-			}
-
-			const pos = {
-				//
-			}
-
-			console.log({ pos })
-
-			setPos(pos)
-		},
-		[startMousePos]
-	)
-
-	const handleOnDragEnd = useCallback(function(event) {
-		setStartMousePos(null)
-	}, [])
+	const { top, left, handleDragOver, handleOnDragEnd } = useDrag()
 
 	return (
 		<StyledImg
@@ -41,7 +13,10 @@ function Image(props) {
 			//
 			onDragOver={handleDragOver}
 			onDragEnd={handleOnDragEnd}
-			pos={pos}
+			style={{
+				top: `${top}px`,
+				left: `${left}px`
+			}}
 		/>
 	)
 }
@@ -50,15 +25,6 @@ const StyledImg = styled.img`
 	height: 10rem;
 	width: 10rem;
 	position: absolute;
-
-	${props => {
-		if (props.pos) {
-			return {
-				top: `${props.pos.top}px`,
-				left: `${props.pos.left}px`
-			}
-		}
-	}}
 `
 
 export default React.memo(Image)
