@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 function Button(props) {
-	return <StyledButton>{props.value}</StyledButton>
+	return <StyledButton {...props}>{props.value}</StyledButton>
 }
 
 const StyledButton = styled.button`

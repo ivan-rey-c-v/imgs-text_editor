@@ -3,6 +3,7 @@ import { AppContext } from '../store/AppContext'
 import styled from 'styled-components'
 
 import Image from './Image'
+import Text from './Text'
 
 function ContentSection(props) {
 	const sectionRef = useRef(null)
@@ -20,6 +21,10 @@ function ContentSection(props) {
 						parentLeft: sectionRef.current.offsetLeft
 					}}
 				/>
+			))}
+
+			{store.state.texts.map((text, index) => (
+				<Text {...text} key={`text=${index}`} index={index} />
 			))}
 		</MainSection>
 	)

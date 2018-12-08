@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useContext, useCallback } from 'react'
+import { AppContext } from '../store/AppContext'
 import styled from 'styled-components'
 
 import FileInput from './FileInput'
 import Button from './Button'
 
 function Aside(props) {
+	const store = useContext(AppContext)
+
+	const handleAddText = useCallback(function(event) {
+		const text = {
+			value: 'Add Text',
+			color: 'darkgray'
+		}
+		store.dispatch({ type: 'ADD_TEXT', text })
+	}, [])
+
 	return (
 		<StyledAside>
 			<Section>
@@ -12,7 +23,7 @@ function Aside(props) {
 			</Section>
 
 			<Section>
-				<Button value="Add Text" />
+				<Button value="Add Text" onClick={handleAddText} />
 			</Section>
 		</StyledAside>
 	)

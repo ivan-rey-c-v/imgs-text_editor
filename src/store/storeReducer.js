@@ -7,6 +7,22 @@ export default function storeReducer(state, action) {
 				images: [...state.images, ...action.images]
 			}
 		}
+		case 'ADD_TEXT': {
+			return {
+				...state,
+				texts: [...state.texts, action.text]
+			}
+		}
+
+		case 'SET_TEXT': {
+			const texts = [...state.texts]
+			texts[action.index].value = action.value
+
+			return {
+				...state,
+				texts
+			}
+		}
 
 		default: {
 			return state
