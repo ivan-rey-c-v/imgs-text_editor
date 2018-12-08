@@ -6,20 +6,14 @@ import Image from './Image'
 import Text from './Text'
 
 function ContentSection(props) {
-	const sectionRef = useRef(null)
 	const store = useContext(AppContext)
 
 	return (
-		<MainSection className="bg-grid" ref={sectionRef}>
+		<MainSection className="bg-grid">
 			{store.state.images.map((imageFile, index) => (
 				<Image
 					src={window.URL.createObjectURL(imageFile)}
 					key={`image-${index}`}
-					sectionRef={sectionRef}
-					parentPos={{
-						parentTop: sectionRef.current.offsetTop,
-						parentLeft: sectionRef.current.offsetLeft
-					}}
 				/>
 			))}
 

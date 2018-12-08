@@ -10,7 +10,6 @@ function Image(props) {
 		<StyledImg
 			src={props.src}
 			draggable
-			//
 			onDragOver={handleDragOver}
 			onDragEnd={handleOnDragEnd}
 			style={{
