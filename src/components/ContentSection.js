@@ -1,27 +1,31 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
+import { AppContext } from '../store/AppContext'
 import styled from 'styled-components'
 
+import Image from './Image'
+
 function ContentSection(props) {
-	return <MainSection>{/*  */}</MainSection>
+	const sectionRef = useRef(null)
+	const store = useContext(AppContext)
+
+	console.log({ sectionRef })
+
+	return (
+		<MainSection className="bg-grid" ref={sectionRef}>
+			{store.state.images.map((imageFile, index) => (
+				<Image
+					src={window.URL.createObjectURL(imageFile)}
+					key={`image-${index}`}
+				/>
+			))}
+		</MainSection>
+	)
 }
 
 const MainSection = styled.section`
 	flex: 1;
 	height: calc(100vh - 56px);
-	background: repeating-linear-gradient(
-			to right,
-			transparent,
-			transparent 20px,
-			white 20px,
-			white 21px
-		),
-		repeating-linear-gradient(
-			to bottom,
-			lightgray,
-			lightgray 20px,
-			white 20px,
-			white 21px
-		);
+	position: relative;
 `
 
 export default React.memo(ContentSection)
