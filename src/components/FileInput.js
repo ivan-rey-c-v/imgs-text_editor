@@ -16,8 +16,6 @@ function FileInput(props) {
 		}
 	}
 
-	console.log({ fileInputRef })
-
 	return (
 		<div>
 			<Label htmlFor="input-file">Add Image</Label>

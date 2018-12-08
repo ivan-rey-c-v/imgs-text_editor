@@ -8,14 +8,17 @@ function ContentSection(props) {
 	const sectionRef = useRef(null)
 	const store = useContext(AppContext)
 
-	console.log({ sectionRef })
-
 	return (
 		<MainSection className="bg-grid" ref={sectionRef}>
 			{store.state.images.map((imageFile, index) => (
 				<Image
 					src={window.URL.createObjectURL(imageFile)}
 					key={`image-${index}`}
+					sectionRef={sectionRef}
+					parentPos={{
+						parentTop: sectionRef.current.offsetTop,
+						parentLeft: sectionRef.current.offsetLeft
+					}}
 				/>
 			))}
 		</MainSection>
