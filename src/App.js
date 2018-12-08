@@ -1,11 +1,24 @@
 import React from 'react'
+import styled from 'styled-components'
+
+import MainHeader from './components/MainHeader'
+import Aside from './components/Aside'
+import ContentSection from './components/ContentSection'
 
 function App(props) {
 	return (
-		<div>
-			<h1>Hello from React!</h1>
-		</div>
+		<main>
+			<MainHeader />
+			<StyledSection>
+				<Aside />
+				<ContentSection />
+			</StyledSection>
+		</main>
 	)
 }
+
+const StyledSection = styled.section`
+	display: flex;
+`
 
 export default React.memo(App)
