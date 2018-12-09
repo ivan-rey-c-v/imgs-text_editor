@@ -22,19 +22,6 @@ img {
 	height: auto;
 }
 
-.bg-grid {
-	background: repeating-linear-gradient(
-		to right,
-		transparent,
-		transparent 20px,
-		white 20px,
-		white 21px
-	),
-	repeating-linear-gradient(
-		to bottom,
-		lightgray,
-		lightgray 20px,
-		white 20px,
-		white 21px
-	);
+.hide-overflow {
+	overflow: hidden;
 }

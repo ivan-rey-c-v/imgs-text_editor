@@ -9,7 +9,7 @@ function MainHeader(props) {
 		<Header>
 			<BrandName />
 			<div>
-				<Button value="Action" />
+				<Button value="Save Image" onClick={props.handleSaveImage} />
 			</div>
 		</Header>
 	)

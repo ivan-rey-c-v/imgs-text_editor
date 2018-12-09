@@ -13,6 +13,13 @@ const StyledButton = styled.button`
 	color: #54546b;
 	border: 1px solid darkgray;
 	cursor: pointer;
+
+	:hover {
+		background-color: lightblue;
+	}
+	:active {
+		transform: scale(0.95);
+	}
 `
 
 export default React.memo(Button)
