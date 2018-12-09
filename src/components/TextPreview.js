@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function TextPreview(props) {
 	return (
-		<Li>
+		<Li {...props}>
 			<p>AAA</p>
 		</Li>
 	)
@@ -15,9 +15,26 @@ const Li = styled.li`
 	min-width: 4rem;
 	margin-right: 0.5rem;
 	border: 1px solid darkgray;
+
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	justify-content: center;
+	overflow: hidden;
+	cursor: pointer;
+	border: ${props => (props.isActive ? '2px solid blue' : 'none')};
+
+	${props => {
+		const { color, background, font, size, align, weight } = props
+
+		return {
+			color,
+			backgroundColor: background,
+			fontFamily: `${font}, sans-serif`,
+			fontSize: `${size}px`,
+			fontWeight: weight,
+			textAlign: align
+		}
+	}};
 `
 
 export default React.memo(TextPreview)

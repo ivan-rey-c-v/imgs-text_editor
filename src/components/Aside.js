@@ -15,6 +15,15 @@ function Aside(props) {
 		store.dispatch({ type: 'ADD_TEXT' })
 	}, [])
 
+	const handleOnClickText = useCallback(
+		index => event => {
+			// stop propagating AppComponent's event: reseting active texts and images
+			event.stopPropagation()
+			store.dispatch({ type: 'ACTIVATE_TEXT', index })
+		},
+		[]
+	)
+
 	return (
 		<StyledAside>
 			<Section>
@@ -33,7 +42,11 @@ function Aside(props) {
 				<Button value="Add Text" onClick={handleAddText} />
 				<PreviewList>
 					{store.state.texts.map((text, index) => (
-						<TextPreview key={`text-${index}`} />
+						<TextPreview
+							key={`text-${index}`}
+							{...text}
+							onClick={handleOnClickText(index)}
+						/>
 					))}
 				</PreviewList>
 			</Section>
