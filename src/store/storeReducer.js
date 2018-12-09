@@ -14,7 +14,7 @@ export default function storeReducer(state, action) {
 				background: 'lightblue',
 				font: 'Arial',
 				weight: '500',
-				size: '16',
+				size: '54',
 				zIndex: '10',
 				align: 'center',
 				isActive: false

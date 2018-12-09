@@ -7,7 +7,7 @@ export default {
 			background: 'lightblue',
 			font: '',
 			weight: '500',
-			size: 16,
+			size: '54',
 			zIndex: 10,
 			align: 'center',
 			isActive: true

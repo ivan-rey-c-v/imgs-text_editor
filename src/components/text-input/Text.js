@@ -16,10 +16,10 @@ function Text(props) {
 	return (
 		<StyledRnd
 			default={{
-				x: 50,
-				y: 50,
-				width: 200,
-				height: 60
+				x: 150,
+				y: 100,
+				width: 400,
+				height: 80
 			}}
 			isactive={props.isActive ? 'true' : 'false'}
 			zindex={props.zIndex}
