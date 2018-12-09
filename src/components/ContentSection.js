@@ -1,12 +1,21 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useCallback } from 'react'
 import { AppContext } from '../store/AppContext'
 import styled from 'styled-components'
 
 import Image from './Image'
-import Text from './Text'
+import Text from './text-input/Text'
 
 function ContentSection(props) {
 	const store = useContext(AppContext)
+
+	const handleOnClickText = useCallback(
+		index => event => {
+			// stop propagating AppComponent's event: reseting active texts and images
+			event.stopPropagation()
+			store.dispatch({ type: 'ACTIVATE_TEXT', index })
+		},
+		[]
+	)
 
 	return (
 		<MainSection className="bg-grid">
@@ -18,7 +27,12 @@ function ContentSection(props) {
 			))}
 
 			{store.state.texts.map((text, index) => (
-				<Text {...text} key={`text=${index}`} index={index} />
+				<Text
+					{...text}
+					key={`text=${index}`}
+					index={index}
+					onClick={handleOnClickText(index)}
+				/>
 			))}
 		</MainSection>
 	)

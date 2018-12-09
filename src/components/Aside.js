@@ -12,11 +12,7 @@ function Aside(props) {
 	const store = useContext(AppContext)
 
 	const handleAddText = useCallback(function(event) {
-		const text = {
-			value: 'Add Text',
-			color: 'darkgray'
-		}
-		store.dispatch({ type: 'ADD_TEXT', text })
+		store.dispatch({ type: 'ADD_TEXT' })
 	}, [])
 
 	return (

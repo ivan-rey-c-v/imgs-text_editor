@@ -1,17 +1,9 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import useDrag from '../hooks/useDrag'
 import { Rnd } from 'react-rnd'
 
 function Image(props) {
-	const [isActive, setIsActive] = useState(false)
-	const { top, left, handleDragOver, handleOnDragEnd } = useDrag()
-
-	const handleClick = useCallback(function(event) {
-		setIsActive(true)
-	}, [])
-
 	return (
 		<Rnd
 			default={{

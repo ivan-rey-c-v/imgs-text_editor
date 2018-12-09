@@ -8,9 +8,21 @@ export default function storeReducer(state, action) {
 			}
 		}
 		case 'ADD_TEXT': {
+			const newText = {
+				value: 'Add Text',
+				color: 'black',
+				background: 'lightblue',
+				font: 'Arial',
+				weight: '500',
+				size: '16',
+				zIndex: '10',
+				align: 'center',
+				isActive: false
+			}
+
 			return {
 				...state,
-				texts: [...state.texts, action.text]
+				texts: [...state.texts, newText]
 			}
 		}
 
@@ -22,6 +34,35 @@ export default function storeReducer(state, action) {
 				...state,
 				texts
 			}
+		}
+
+		case 'ACTIVATE_TEXT': {
+			const texts = state.texts.map((text, index) => {
+				return index === action.index
+					? { ...text, isActive: true }
+					: { ...text, isActive: false }
+			})
+
+			return { ...state, texts }
+		}
+
+		case 'MODIFY_TEXT': {
+			const texts = state.texts.map((text, index) => {
+				return index === action.index
+					? { ...text, ...action.option }
+					: text
+			})
+			console.log({ texts })
+
+			return { ...state, texts }
+		}
+
+		case 'REMOVE_ACTIVES': {
+			const unsetTexts = state.texts.map(text => {
+				return { ...text, isActive: false }
+			})
+
+			return { ...state, texts: unsetTexts }
 		}
 
 		default: {

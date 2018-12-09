@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useCallback } from 'react'
 import { AppContext } from './store/AppContext'
 import styled from 'styled-components'
 
@@ -10,8 +10,13 @@ function App(props) {
 	// redux-like store: state, dispatch
 	const store = useContext(AppContext)
 
+	const handleOnClickApp = useCallback(function(event) {
+		event.stopPropagation()
+		store.dispatch({ type: 'REMOVE_ACTIVES' })
+	}, [])
+
 	return (
-		<main>
+		<main onClick={handleOnClickApp}>
 			<MainHeader />
 			<StyledSection>
 				<Aside />
